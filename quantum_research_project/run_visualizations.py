@@ -11,5 +11,5 @@ project_root = os.path.dirname(os.path.abspath(__file__))
 viz_folder = os.path.join(project_root, 'visualizations')
 
 print("🎬 Launching quantum animation...")
-os.chdir(viz_folder)  # Change to visualizations folder
+os.chdir(viz_folder) 
 subprocess.run([sys.executable, "animation_simulation.py"])

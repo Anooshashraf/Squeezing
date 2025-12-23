@@ -33,12 +33,27 @@ class QuantumAnimation:
     def setup_components(self):
         """Setup all optical components"""
         
-        # Title
-        self.ax.text(7, 8.5, 'BBO SQUEEZED LIGHT QRNG - LIVE SIMULATION', 
+        # Title (move up slightly)
+        self.ax.text(7, 8.7, 'BBO SQUEEZED LIGHT QRNG - LIVE SIMULATION', 
                     fontsize=18, fontweight='bold', ha='center',
                     color='darkblue',
                     path_effects=[path_effects.withStroke(linewidth=3, 
                                                          foreground='white')])
+        # Instructions box (move below title, left-aligned)
+        explanation = """
+        HOW IT WORKS:
+        1. 🔦 Green laser (532 nm) pumps BBO crystal
+        2. 🔥 BBO in temperature-controlled oven creates nonlinear effects
+        3. 💎 Quantum squeezing: Blue = Anti-squeezed (more noise = randomness)
+        4. ↔️ Beam splitter combines with reference laser
+        5. 📊 Two detectors measure interference
+        6. ➖ Subtractor finds difference (quantum noise)
+        7. 📈 Oscilloscope analyzes quantum fluctuations
+        8. 🎲 Quantum noise → True random bits!
+        """
+        self.ax.text(1.2, 7.8, explanation, fontsize=10, 
+                    ha='left', va='top',
+                    bbox=dict(boxstyle='round', facecolor='lightblue', alpha=0.5, edgecolor='navy'))
         
         # 1. LASER SOURCE
         self.ax.add_patch(Rectangle((0.5, 3.5), 1, 1, 
@@ -122,20 +137,19 @@ class QuantumAnimation:
         self.ax.text(13.5, 2.5, 'Balanced\nSubtractor', 
                     fontsize=8, ha='center')
         
-        # 9. OSCILLOSCOPE
-        self.ax.add_patch(Rectangle((14.5, 2.5), 1.5, 2, 
+        # 9. OSCILLOSCOPE (move left for visibility)
+        self.ax.add_patch(Rectangle((13.2, 4.2), 1.2, 1.7, 
                                    facecolor='#6A4C93', alpha=0.8,
                                    edgecolor='#4A2C73', linewidth=3))
-        self.ax.text(15.25, 3.5, '📈', fontsize=20, ha='center', va='center')
-        self.ax.text(15.25, 2, 'Oscilloscope\n& Analysis', 
-                    fontsize=8, ha='center')
-        
-        # 10. RANDOM NUMBER DISPLAY
-        self.random_display = Rectangle((14.5, 5.5), 1.5, 1, 
+        self.ax.text(13.8, 5.1, '📈', fontsize=20, ha='center', va='center')
+        self.ax.text(13.8, 4.3, 'Oscilloscope\n& Analysis', 
+                    fontsize=10, ha='center', color='white', fontweight='bold')
+        # 10. RANDOM NUMBER DISPLAY (move left)
+        self.random_display = Rectangle((13.2, 6.2), 1.2, 0.8, 
                                        facecolor='#06D6A0', alpha=0.7,
                                        edgecolor='#048A81', linewidth=2)
         self.ax.add_patch(self.random_display)
-        self.random_text = self.ax.text(15.25, 6, 'RANDOM\nBITS', 
+        self.random_text = self.ax.text(13.8, 6.6, 'RANDOM\nBITS', 
                                        fontsize=12, ha='center',
                                        fontweight='bold', color='white')
         
@@ -144,17 +158,16 @@ class QuantumAnimation:
                                        fontsize=12, ha='center',
                                        fontweight='bold', color='darkblue')
         
-        # Squeezing meter
-        self.ax.add_patch(Rectangle((0, 6), 1.5, 1, 
-                                   facecolor='lightgray', alpha=0.5))
-        self.squeeze_text = self.ax.text(0.75, 6.5, 'Squeezing:\n0.0 dB', 
-                                        fontsize=9, ha='center')
-        
-        # Rate display
-        self.ax.add_patch(Rectangle((0, 7.5), 1.5, 1, 
-                                   facecolor='lightgray', alpha=0.5))
-        self.rate_text = self.ax.text(0.75, 8, 'Rate:\n0 Mbps', 
-                                     fontsize=9, ha='center')
+        # Squeezing meter (move left)
+        self.ax.add_patch(Rectangle((11.8, 7.5), 1.3, 0.8, 
+                                   facecolor='lightgray', alpha=0.7, zorder=2))
+        self.squeeze_text = self.ax.text(12.45, 7.9, 'Squeezing:\n0.0 dB', 
+                                        fontsize=11, ha='center', fontweight='bold', zorder=3)
+        # Rate display (move left)
+        self.ax.add_patch(Rectangle((11.8, 8.3), 1.3, 0.6, 
+                                   facecolor='lightgray', alpha=0.7, zorder=2))
+        self.rate_text = self.ax.text(12.45, 8.55, 'Rate:\n0 Mbps', 
+                                     fontsize=11, ha='center', fontweight='bold', zorder=3)
         
     def update_animation(self, frame):
         """Update animation frame"""
@@ -391,23 +404,6 @@ class QuantumAnimation:
             blit=True,
             repeat=True
         )
-        
-        # Add explanation text
-        explanation = """
-        HOW IT WORKS:
-        1. 🔦 Green laser (532 nm) pumps BBO crystal
-        2. 🔥 BBO in temperature-controlled oven creates nonlinear effects
-        3. 💎 Quantum squeezing: Blue = Anti-squeezed (more noise = randomness)
-        4. ↔️ Beam splitter combines with reference laser
-        5. 📊 Two detectors measure interference
-        6. ➖ Subtractor finds difference (quantum noise)
-        7. 📈 Oscilloscope analyzes quantum fluctuations
-        8. 🎲 Quantum noise → True random bits!
-        """
-        
-        self.ax.text(-0.5, 5, explanation, fontsize=9, 
-                    ha='left', va='top',
-                    bbox=dict(boxstyle='round', facecolor='lightblue', alpha=0.3))
         
         plt.tight_layout()
         plt.show()

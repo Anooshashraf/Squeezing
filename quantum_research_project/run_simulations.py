@@ -9,7 +9,7 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'simulations'))
 
 # Now import and run simulations
-from main import run_complete_simulation  # Adjust based on your main.py
+from main import run_complete_simulation 
 
 if __name__ == "__main__":
     print("🚀 Launching simulations from project root...")
