@@ -9,7 +9,7 @@ from matplotlib.collections import PatchCollection
 import matplotlib.patheffects as path_effects
 
 class QuantumAnimation:
-    """Interactive animation of the complete QRNG process"""
+    """animation of the complete QRNG process"""
     
     def __init__(self):
         self.fig, self.ax = plt.subplots(figsize=(16, 10))
@@ -42,14 +42,14 @@ class QuantumAnimation:
         # Instructions box (move below title, left-aligned)
         explanation = """
         HOW IT WORKS:
-        1. 🔦 Green laser (532 nm) pumps BBO crystal
-        2. 🔥 BBO in temperature-controlled oven creates nonlinear effects
-        3. 💎 Quantum squeezing: Blue = Anti-squeezed (more noise = randomness)
-        4. ↔️ Beam splitter combines with reference laser
-        5. 📊 Two detectors measure interference
-        6. ➖ Subtractor finds difference (quantum noise)
-        7. 📈 Oscilloscope analyzes quantum fluctuations
-        8. 🎲 Quantum noise → True random bits!
+        1. Green laser (532 nm) pumps BBO crystal
+        2. BBO in temperature-controlled oven creates nonlinear effects
+        3. Quantum squeezing: Blue = Anti-squeezed (more noise = randomness)
+        4. ↔Beam splitter combines with reference laser
+        5. Two detectors measure interference
+        6. Subtractor finds difference (quantum noise)
+        7. Oscilloscope analyzes quantum fluctuations
+        8. Quantum noise → True random bits!
         """
         self.ax.text(1.2, 7.8, explanation, fontsize=10, 
                     ha='left', va='top',
@@ -59,7 +59,7 @@ class QuantumAnimation:
         self.ax.add_patch(Rectangle((0.5, 3.5), 1, 1, 
                                    facecolor='#FF6B6B', edgecolor='black', 
                                    linewidth=2))
-        self.ax.text(1, 4, '🔦', fontsize=20, ha='center', va='center')
+        self.ax.text(1, 4, 'Laser', fontsize=20, ha='center', va='center')
         self.ax.text(1, 3, '532 nm\nGreen Laser', fontsize=10, ha='center', 
                     fontweight='bold')
         
@@ -67,7 +67,7 @@ class QuantumAnimation:
         self.ax.add_patch(Rectangle((2.5, 3), 1, 2, 
                                    facecolor='#4ECDC4', alpha=0.3,
                                    edgecolor='black', linewidth=1))
-        self.ax.text(3, 4, '🔍', fontsize=20, ha='center', va='center')
+        self.ax.text(3, 4, 'Beam Shaper', fontsize=20, ha='center', va='center')
         self.ax.text(3, 3, 'Lenses\nBeam\nShaper', fontsize=8, ha='center')
         
         # 3. BBO CRYSTAL (animated oven)
@@ -87,7 +87,7 @@ class QuantumAnimation:
                                      ha='center', fontweight='bold',
                                      color='red')
         
-        self.ax.text(6, 4.5, '💎 BBO Crystal\nin Oven 🔥', 
+        self.ax.text(6, 4.5, ' BBO Crystal', 
                     fontsize=10, ha='center', fontweight='bold')
         
         # 4. QUANTUM EFFECT ZONE
@@ -112,7 +112,7 @@ class QuantumAnimation:
         self.ax.add_patch(Rectangle((10, 6), 1, 0.8, 
                                    facecolor='#118AB2', alpha=0.7,
                                    edgecolor='#073B4C', linewidth=2))
-        self.ax.text(10.5, 6.4, '💡', fontsize=15, ha='center', va='center')
+        self.ax.text(10.5, 6.4, 'LO', fontsize=15, ha='center', va='center')
         self.ax.text(10.5, 7, 'Local\nOscillator', fontsize=8, ha='center')
         
         # 7. DETECTORS
@@ -141,7 +141,7 @@ class QuantumAnimation:
         self.ax.add_patch(Rectangle((13.2, 4.2), 1.2, 1.7, 
                                    facecolor='#6A4C93', alpha=0.8,
                                    edgecolor='#4A2C73', linewidth=3))
-        self.ax.text(13.8, 5.1, '📈', fontsize=20, ha='center', va='center')
+        self.ax.text(13.8, 5.1, 'Oscilloscope', fontsize=20, ha='center', va='center')
         self.ax.text(13.8, 4.3, 'Oscilloscope\n& Analysis', 
                     fontsize=10, ha='center', color='white', fontweight='bold')
         # 10. RANDOM NUMBER DISPLAY (move left)
