@@ -37,12 +37,12 @@ class QuantumDashboard:
         
         # 2. Quantum Squeezing Visualization (top middle)
         self.ax_squeeze = self.fig.add_subplot(self.gs[0, 1])
-        self.ax_squeeze.set_title('💎 Quantum Squeezing Visualization', 
+        self.ax_squeeze.set_title(' Quantum Squeezing Visualization', 
                                  fontsize=14, fontweight='bold')
         
         # 3. Homodyne Detection Signals (top right)
         self.ax_signals = self.fig.add_subplot(self.gs[0, 2])
-        self.ax_signals.set_title('📊 Homodyne Detection Signals', 
+        self.ax_signals.set_title(' Homodyne Detection Signals', 
                                  fontsize=14, fontweight='bold')
         self.ax_signals.set_xlabel('Time (ns)')
         self.ax_signals.set_ylabel('Amplitude')
@@ -50,7 +50,7 @@ class QuantumDashboard:
         
         # 4. Phase Space Diagram (middle left)
         self.ax_phase = self.fig.add_subplot(self.gs[1, 0])
-        self.ax_phase.set_title('🌀 Phase Space Representation', 
+        self.ax_phase.set_title(' Phase Space Representation', 
                                fontsize=14, fontweight='bold')
         self.ax_phase.set_xlabel('X-quadrature')
         self.ax_phase.set_ylabel('P-quadrature')
@@ -58,7 +58,7 @@ class QuantumDashboard:
         
         # 5. Noise Power Spectrum (middle)
         self.ax_spectrum = self.fig.add_subplot(self.gs[1, 1])
-        self.ax_spectrum.set_title('📈 Noise Power Spectrum', 
+        self.ax_spectrum.set_title(' Noise Power Spectrum', 
                                   fontsize=14, fontweight='bold')
         self.ax_spectrum.set_xlabel('Frequency (MHz)')
         self.ax_spectrum.set_ylabel('Power (dB)')
@@ -66,7 +66,7 @@ class QuantumDashboard:
         
         # 6. Bit Generation Monitor (middle right)
         self.ax_bits = self.fig.add_subplot(self.gs[1, 2])
-        self.ax_bits.set_title('🎲 Random Bit Generation', 
+        self.ax_bits.set_title(' Random Bit Generation', 
                               fontsize=14, fontweight='bold')
         self.ax_bits.set_xlabel('Bit Position')
         self.ax_bits.set_ylabel('Bit Value')
@@ -74,25 +74,25 @@ class QuantumDashboard:
         
         # 7. System Parameters (bottom left)
         self.ax_params = self.fig.add_subplot(self.gs[2, 0])
-        self.ax_params.set_title('⚙️ System Parameters', 
+        self.ax_params.set_title(' System Parameters', 
                                 fontsize=14, fontweight='bold')
         self.ax_params.axis('off')
         
         # 8. Performance Metrics (bottom middle)
         self.ax_metrics = self.fig.add_subplot(self.gs[2, 1])
-        self.ax_metrics.set_title('📊 Performance Metrics', 
+        self.ax_metrics.set_title('Performance Metrics', 
                                  fontsize=14, fontweight='bold')
         self.ax_metrics.axis('off')
         
         # 9. Security Analysis (bottom right)
         self.ax_security = self.fig.add_subplot(self.gs[2, 2])
-        self.ax_security.set_title('🔒 Security Analysis', 
+        self.ax_security.set_title('Security Analysis', 
                                   fontsize=14, fontweight='bold')
         self.ax_security.axis('off')
         
         # 10. Log/Status Panel (right column)
         self.ax_log = self.fig.add_subplot(self.gs[:, 3])
-        self.ax_log.set_title('📝 System Log & Status', 
+        self.ax_log.set_title(' System Log & Status', 
                              fontsize=14, fontweight='bold')
         self.ax_log.axis('off')
         
@@ -105,15 +105,15 @@ class QuantumDashboard:
         
         # Components
         components = [
-            (1, 5, '🔦', 'Laser\n532 nm', '#FF6B6B'),
-            (3, 5, '🔍', 'Beam\nShaper', '#4ECDC4'),
-            (5, 5, '🔥💎', 'BBO\nCrystal', '#06D6A0'),
-            (7, 6, '💡', 'Local\nOscillator', '#118AB2'),
-            (7, 4, '↔', 'Beam\nSplitter', '#8AC926'),
-            (8.5, 6.5, '📊', 'Detector\nA', '#FF595E'),
-            (8.5, 3.5, '📊', 'Detector\nB', '#FF595E'),
-            (9.5, 5, '➖', 'Balanced\nDetection', '#FFD166'),
-            (10.5, 5, '📈', 'Analysis', '#6A4C93'),
+            (1, 5, '', 'Laser\n532 nm', '#FF6B6B'),
+            (3, 5, '', 'Beam\nShaper', '#4ECDC4'),
+            (5, 5, '', 'BBO\nCrystal', '#06D6A0'),
+            (7, 6, '', 'Local\nOscillator', '#118AB2'),
+            (7, 4, '', 'Beam\nSplitter', '#8AC926'),
+            (8.5, 6.5, '', 'Detector\nA', '#FF595E'),
+            (8.5, 3.5, '', 'Detector\nB', '#FF595E'),
+            (9.5, 5, '', 'Balanced\nDetection', '#FFD166'),
+            (10.5, 5, '', 'Analysis', '#6A4C93'),
         ]
         
         for x, y, emoji, label, color in components:
@@ -195,7 +195,7 @@ class QuantumDashboard:
         self.ax_squeeze.arrow(0, 0, 1.5, 0, head_width=0.05, 
                              head_length=0.1, fc='black', ec='black')
         self.ax_squeeze.arrow(0, 0, 0, 1.5, head_width=0.05, 
-                             head_width=0.05, fc='black', ec='black')
+                     head_length=0.1, fc='black', ec='black')
         
         self.ax_squeeze.text(1.6, 0, 'X (Amplitude)', fontsize=10)
         self.ax_squeeze.text(0, 1.6, 'P (Phase)', fontsize=10)
@@ -205,7 +205,7 @@ class QuantumDashboard:
             angle = phase
             x_marker = 1.8 * np.cos(angle)
             y_marker = 1.8 * np.sin(angle)
-            self.ax_squeeze.text(x_marker, y_marker, '⭐', 
+            self.ax_squeeze.text(x_marker, y_marker, '', 
                                 fontsize=20, ha='center', va='center',
                                 color='gold')
             self.ax_squeeze.text(x_marker*1.2, y_marker*1.2, 
@@ -365,7 +365,7 @@ class QuantumDashboard:
         t = self.time
         
         params = [
-            ('⚙️ SYSTEM PARAMETERS', ''),
+            (' SYSTEM PARAMETERS', ''),
             ('Laser Power:', f'{200 + 10*np.sin(t):.0f} mW'),
             ('BBO Temperature:', f'{25 + 0.5*np.sin(t*0.5):.1f} °C'),
             ('Squeezing Level:', f'{3 + np.sin(t*0.3):.1f} dB'),
@@ -399,7 +399,7 @@ class QuantumDashboard:
         t = self.time
         
         metrics = [
-            ('📊 PERFORMANCE METRICS', ''),
+            (' PERFORMANCE METRICS', ''),
             ('Bit Generation Rate:', f'{250 + 50*np.sin(t*0.2):.0f} Mbps'),
             ('Min-Entropy:', f'{7.2 + 0.2*np.sin(t):.1f} bits/sample'),
             ('SNR:', f'{15 + 2*np.sin(t*0.5):.1f} dB'),
@@ -434,7 +434,7 @@ class QuantumDashboard:
         t = self.time
         
         security_info = [
-            ('🔒 SECURITY ANALYSIS', ''),
+            (' SECURITY ANALYSIS', ''),
             ('Protocol:', 'Semi-Device-Independent'),
             ('Trusted:', 'Detector & Processor'),
             ('Untrusted:', 'Source & Local Oscillator'),
@@ -443,7 +443,7 @@ class QuantumDashboard:
             ('LO Noise Fraction:', f'{0.05 + 0.01*np.sin(t*0.7):.3f}'),
             ('Electronic Noise:', '-13 dB'),
             ('Attack Detection:', 'Active'),
-            ('Status:', 'SECURE ✅'),
+            ('Status:', 'SECURE '),
         ]
         
         y_pos = 0.9
@@ -500,7 +500,7 @@ class QuantumDashboard:
         self.ax_log.add_patch(plt.Rectangle((0.02, 0.02), 0.96, 0.1,
                                            facecolor=status_color, alpha=0.2,
                                            edgecolor=status_color, linewidth=2))
-        self.ax_log.text(0.5, 0.07, f'🚀 STATUS: {status_text}', 
+        self.ax_log.text(0.5, 0.07, f' STATUS: {status_text}', 
                         fontsize=12, ha='center', fontweight='bold',
                         color=status_color)
     
@@ -521,14 +521,14 @@ class QuantumDashboard:
         self.draw_log()
         
         # Update title with timestamp
-        self.fig.suptitle(f'🌌 BBO SQUEEZED LIGHT QRNG - LIVE DASHBOARD | Time: {self.time:.1f}s', 
+        self.fig.suptitle(f' BBO SQUEEZED LIGHT QRNG - LIVE DASHBOARD | Time: {self.time:.1f}s', 
                          fontsize=16, fontweight='bold', color='darkblue')
         
         return []
     
     def run(self):
         """Run the dashboard animation"""
-        print("🚀 Starting Quantum Dashboard...")
+        print(" Starting Quantum Dashboard...")
         print("Dashboard shows:")
         print("1. Optical schematic with animated photons")
         print("2. Quantum squeezing visualization")

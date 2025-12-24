@@ -392,7 +392,7 @@ class QuantumAnimation:
     
     def run_animation(self):
         """Run the complete animation"""
-        print("🎬 Starting Quantum Animation...")
+        print(" Starting Quantum Animation...")
         print("Green beam → BBO crystal → Blue squeezed light → Detectors → Random bits!")
         
         # Create animation
@@ -410,13 +410,13 @@ class QuantumAnimation:
         
         # Save animation
         try:
-            print("💾 Saving animation... (This may take a minute)")
+            print(" Saving animation... (This may take a minute)")
             anim.save('quantum_animation.mp4', fps=20, 
                      extra_args=['-vcodec', 'libx264'],
                      dpi=150)
-            print("✅ Animation saved as 'quantum_animation.mp4'")
+            print(" Animation saved as 'quantum_animation.mp4'")
         except:
-            print("⚠️ Could not save video. Showing live animation instead.")
+            print(" Could not save video. Showing live animation instead.")
         
         return anim
 
@@ -424,3 +424,4 @@ class QuantumAnimation:
 if __name__ == "__main__":
     animator = QuantumAnimation()
     anim = animator.run_animation()
+
